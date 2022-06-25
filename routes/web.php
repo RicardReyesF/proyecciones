@@ -29,5 +29,5 @@ Auth::routes();
 Route::get('/home',[App\Http\Controllers\dashboardController::class,'index'])->name('Home');
 Route::get('/alumnos',[App\Http\Controllers\alumnosController::class,'alumnos'])->name('Alumnos');
 Route::get('/estadisticas',[App\Http\Controllers\estadisticasController::class,'estadisticas'])->name('Estadisticas');
-Route::get('/materias/{21280536}',[App\Http\Controllers\materiasController::class,'materias'])->name('Materias');
+Route::get('/materias/{id}',[App\Http\Controllers\materiasController::class,'materias'])->name('Materias');
 Route::post('/alumnos/importar',[App\Http\Controllers\alumnosController::class,'importar'])->name('Importar');

@@ -57,7 +57,7 @@
                                 <td>{{ $alumno->creditosQueDebeTener }}</td>
                                 <td>{{ $alumno->promedio }}</td>
                                 <td>
-                                    <a type="button" class="btn btn-success" href="{{route('Materias',$alumno)}}" >Materias</a>
+                                    <a type="button" class="btn btn-success" href="{{route('Materias',$alumno->noControl)}}" >Materias</a>
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-primary">Proyeccion</button>

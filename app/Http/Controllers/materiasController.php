@@ -10,11 +10,9 @@ class materiasController extends Controller
 {
     public function materias($id)
     {
-        return $id;
         $alumnos = Alumno::query()->with('materias')->find($id);
+
         return view('Dashboard.materias',array('alumnos' => $alumnos));
-
-
     }
 
 
