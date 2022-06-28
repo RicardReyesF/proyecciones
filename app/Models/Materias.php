@@ -6,9 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Materias extends Model
+
+
 {
+
+    protected $primaryKey = 'materia';
+
     protected $fillable = [
-        'id',
+        'materia',
         'nombre',
         'creditos',
         'carrera',
@@ -18,7 +23,7 @@ class Materias extends Model
 
     public function alumnos()
     {
-        return $this->belongsToMany(Alumno::class);
+        return $this->belongsToMany(Alumno::class,'alumnos_materias_models','materias_id','alumnos_id','materia','noControl',);
     }
 
 }

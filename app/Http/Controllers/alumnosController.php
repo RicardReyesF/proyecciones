@@ -26,14 +26,15 @@ class alumnosController extends Controller
     {
 
         $request->validate([
-            'documento' => 'required|max:10000|mimes:xlsx,xls',
+            'documento' => 'required|max:10000|mimes:xlsx,xls,csv',
         ]);
 
         $file = $request->file('documento');
         Excel::import(new AlumnosImport, $file);
-        Excel::import(new MateriaAlumnosImport, $file);
 
 
         return redirect()->route('Alumnos');
     }
+
+
 }

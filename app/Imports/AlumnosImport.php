@@ -6,7 +6,6 @@ use App\Models\Alumno;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use Maatwebsite\Excel\Concerns\WithProgressBar;
 
 class AlumnosImport implements ToModel, WithHeadingRow, WithBatchInserts
 {
@@ -16,6 +15,7 @@ class AlumnosImport implements ToModel, WithHeadingRow, WithBatchInserts
     * @return \Illuminate\Database\Eloquent\Model|null
     */
     public function model(array $row)
+
     {
         return new Alumno([
 
@@ -43,6 +43,7 @@ class AlumnosImport implements ToModel, WithHeadingRow, WithBatchInserts
     {
         return 4000;
     }
+
 
 
 }

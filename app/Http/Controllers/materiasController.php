@@ -12,6 +12,7 @@ class materiasController extends Controller
     {
         $alumnos = Alumno::query()->with('materias')->find($id);
 
+
         return view('Dashboard.materias',array('alumnos' => $alumnos));
     }
 
