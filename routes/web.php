@@ -30,4 +30,5 @@ Route::get('/home',[App\Http\Controllers\dashboardController::class,'index'])->n
 Route::get('/alumnos',[App\Http\Controllers\alumnosController::class,'alumnos'])->name('Alumnos');
 Route::get('/estadisticas',[App\Http\Controllers\estadisticasController::class,'estadisticas'])->name('Estadisticas');
 Route::get('/materias/{id}',[App\Http\Controllers\materiasController::class,'materias'])->name('Materias');
+Route::get('/proyeccion/{id}',[App\Http\Controllers\proyeccionesController::class,'proyeccion'])->name('Proyeccion');
 Route::post('/alumnos/importar',[App\Http\Controllers\alumnosController::class,'importar'])->name('Importar');

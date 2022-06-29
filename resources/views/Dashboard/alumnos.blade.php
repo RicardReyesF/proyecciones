@@ -60,7 +60,7 @@
                                     <a type="button" class="btn btn-success" href="{{route('Materias',$alumno->noControl)}}" >Materias</a>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-primary">Proyeccion</button>
+                                    <a type="button" class="btn btn-primary" href="{{route('Proyeccion',$alumno->noControl)}}">Proyeccion</a>
                                 </td>
                             </tr>
                         @endforeach

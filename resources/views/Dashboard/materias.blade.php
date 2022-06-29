@@ -29,7 +29,7 @@
                         <tbody>
                             @foreach ($alumnos->materias as $alumno)
                                 <tr>
-                                    <td>{{ $alumno->id }}</td>
+                                    <td>{{ $alumno->materia }}</td>
                                     <td>{{ $alumno->nombre }}</td>
                                     <td>{{ $alumno->creditos }}</td>
                                     <td>{{ $alumno->semestre }}</td>
