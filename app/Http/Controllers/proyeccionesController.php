@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Alumno;
 use App\Models\alumnosMateriasModel;
 use App\Models\Materias;
-use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Maatwebsite\Excel\Concerns\ToArray;
 
 class proyeccionesController extends Controller
@@ -26,31 +24,32 @@ class proyeccionesController extends Controller
         $arregloMatAlumno = array();
         $arregloMateriaTotales = array();
         foreach($alumnosMaterias as $alumnoMateria)
-        {
+            {
             $matAlumno= $alumnoMateria['materias_id'];
             array_push($arregloMatAlumno,$matAlumno);
-            foreach($materias as $materia)
+
+            }
+        foreach($materias as $materia)
             {
                 $materiaTotales= strval($materia['materia']);
                 array_push($arregloMateriaTotales,$materiaTotales);
             }
-
-
-        }
         $arregloDif=array_diff($arregloMateriaTotales,$arregloMatAlumno);
         foreach($arregloDif as $arregloD)
         {
             $diff= $arregloD;
             foreach($materias as $materiadiff)
             {
+
                 $pro = $materiadiff['materia'];
                 if($diff == $pro)
                 {
-                    array_push($arregloMaterias,$materiadiff['materia'],$materiadiff['nombre'],$materiadiff['creditos'],$materiadiff['carrera'],$materiadiff['semestre']);
+                    array_push($arregloMaterias,$materiadiff['nombre']);
                 }
             }
         }
-        return $arregloMaterias;
+
+        return view('Dashboard.proyeccion')->with(['arregloMaterias'=>$arregloMaterias]);
     }
 
     /*
