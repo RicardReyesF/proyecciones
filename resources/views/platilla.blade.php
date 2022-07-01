@@ -64,13 +64,23 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ route ('Estadisticas') }}" aria-expanded="true">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Estadisticas</span>
+                    <span>Reportes</span>
                 </a>
-
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Archivos</h6>
+                        <a class="collapse-item" href="{{route('Servicio')}}">Servicio Social</a>
+                        <a class="collapse-item" href="{{route('Creditos')}}">Creditos complementarios</a>
+                        <a class="collapse-item" href="{{route('MateriasC')}}">Materias cursadas</a>
+                    </div>
+                </div>
                 <!-- Divider -->
                 <hr class="sidebar-divider">
+            </li>
 
 
         </ul>
