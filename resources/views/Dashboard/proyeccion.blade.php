@@ -13,7 +13,7 @@
             @foreach ($arregloMaterias as $materia)
             <div class="cardT">
                 <h1>Materias</h1>
-                <p>{{$materia}}</p>
+                <p>{{$materia['nombre']}}</p>
             </div>
             @endforeach
     </div>
