@@ -689,7 +689,7 @@ class proyeccionesController extends Controller
         $semestre = $rezagada['semestre'];
         $materia = $rezagada['materia'];
         if (in_array('1852', $rezagadas) == true && in_array('1853', $rezagadas) == true && in_array('1856', $rezagadas) == true && in_array('1857', $rezagadas) == true && in_array('1863', $rezagadas) == true) {
-            if ($semestre == 6 && count($primerSemestre) <= 6) {
+            if ($semestre == 7 && count($primerSemestre) <= 6) {
                 array_push($primerSemestre, $rezagada);
             } elseif (count($segundo) <= 6) {
                 array_push($segundo, $rezagada);
@@ -707,6 +707,203 @@ class proyeccionesController extends Controller
 
     //---------7mo a 8vo--------//
 
+    //treinta y cuatro
+    foreach ($rezagadas as $rezagada) {
+        $semestre = $rezagada['semestre'];
+        $materia = $rezagada['materia'];
+        if (in_array('1860', $rezagadas) == false) {
+            $llave = array_search($rezagada['materia'] == '1860', $rezagadas);
+            unset($rezagadas[$llave]);
+            if ($semestre == 8) {
+                if ($materia == '1865') {
+                    if (count($g) <= 6) {
+                        array_push($g, $rezagada);
+                    } else {
+                        array_push($h, $rezagada);
+                    }
+                }
+            }
+        }
+    }
+
+    //treinta y cinco
+    foreach ($rezagadas as $rezagada) {
+        $semestre = $rezagada['semestre'];
+        $materia = $rezagada['materia'];
+        if (in_array('1859', $rezagadas) == false) {
+            $llave = array_search($rezagada['materia'] == '1859', $rezagadas);
+            unset($rezagadas[$llave]);
+            if ($semestre == 8) {
+                if ($materia == '1864') {
+                    if (count($g) <= 6) {
+                        array_push($g, $rezagada);
+                    } else {
+                        array_push($h, $rezagada);
+                    }
+                }
+            }
+        }
+    }
+
+        //treinta y seis
+    foreach ($rezagadas as $rezagada) {
+        $semestre = $rezagada['semestre'];
+        $materia = $rezagada['materia'];
+        if (in_array('1850', $rezagadas) == false) {
+            $llave = array_search($rezagada['materia'] == '1850', $rezagadas);
+            unset($rezagadas[$llave]);
+            if ($semestre == 8) {
+                if ($materia == '1855') {
+                    if (count($g) <= 6) {
+                        array_push($g, $rezagada);
+                    } else {
+                        array_push($h, $rezagada);
+                    }
+                }
+            }
+        }
+    }
+
+        //treinta y siete
+    foreach ($rezagadas as $rezagada) {
+        $semestre = $rezagada['semestre'];
+        $materia = $rezagada['materia'];
+        if ($semestre == 8  && $materia != '1855' && $materia != '1864' && $materia != '1865') {
+            if (count($primerSemestre) <= 6) {
+                array_push($primerSemestre, $rezagada);
+            } elseif (count($segundo) <= 6) {
+                array_push($segundo, $rezagada);
+            } elseif(count($c) <= 6) {
+                array_push($c, $rezagada);
+            }elseif(count($d) <= 6) {
+                array_push($d, $rezagada);
+            }elseif(count($e) <= 6){
+                array_push($e,$rezagada);
+            }elseif((count($f) <= 6)) {
+                array_push($f,$rezagada);
+            }elseif((count($g) <= 6)){
+                array_push($g,$rezagada);
+            }else{
+                array_push($h,$rezagada);
+            }
+        }
+    }
+
+        //treinta y ocho
+    foreach ($rezagadas as $rezagada) {
+        $semestre = $rezagada['semestre'];
+        $materia = $rezagada['materia'];
+        if (in_array('1850', $rezagadas) == true && in_array('1859', $rezagadas) == true && in_array('1860', $rezagadas) == true ){
+            if ($semestre == 8 && count($primerSemestre) <= 6) {
+                array_push($primerSemestre, $rezagada);
+            } elseif (count($segundo) <= 6) {
+                array_push($segundo, $rezagada);
+            } elseif( count($c) <= 6) {
+                array_push($c,$rezagada);
+            }elseif(count($d) <= 6) {
+                array_push($d,$rezagada);
+            }elseif(count($e) <= 6) {
+                array_push($e,$rezagada);
+            }else {
+                array_push($f,$rezagada);
+            }
+        }
+    }
+
+    //---------8vo a 9no--------//
+
+
+    //treinta y nueve
+    foreach ($rezagadas as $rezagada) {
+        $semestre = $rezagada['semestre'];
+        $materia = $rezagada['materia'];
+        if (in_array('1866', $rezagadas) == false) {
+            $llave = array_search($rezagada['materia'] == '1866', $rezagadas);
+            unset($rezagadas[$llave]);
+            if ($semestre == 9) {
+                if ($materia == '2309' && $materia == '2307') {
+                    if (count($g) <= 6) {
+                        array_push($g, $rezagada);
+                    } else {
+                        array_push($h, $rezagada);
+                    }
+                }
+            }
+        }
+    }
+
+    //cuarenta
+    foreach ($rezagadas as $rezagada) {
+        $semestre = $rezagada['semestre'];
+        $materia = $rezagada['materia'];
+        if (in_array('2308', $rezagadas) == false) {
+            $llave = array_search($rezagada['materia'] == '2308', $rezagadas);
+            unset($rezagadas[$llave]);
+            if ($semestre == 9) {
+                if ($materia == '2311') {
+                    if (count($g) <= 6) {
+                        array_push($g, $rezagada);
+                    } else {
+                        array_push($h, $rezagada);
+                    }
+                }
+            }
+        }
+    }
+
+    //cuarenta y uno
+    foreach ($rezagadas as $rezagada) {
+        $semestre = $rezagada['semestre'];
+        $materia = $rezagada['materia'];
+        if ($semestre == 9  && $materia != '2311' && $materia != '2309' && $materia != '2307') {
+            if (count($primerSemestre) <= 6) {
+                array_push($primerSemestre, $rezagada);
+            } elseif (count($segundo) <= 6) {
+                array_push($segundo, $rezagada);
+            } elseif(count($c) <= 6) {
+                array_push($c, $rezagada);
+            }elseif(count($d) <= 6) {
+                array_push($d, $rezagada);
+            }elseif(count($e) <= 6){
+                array_push($e,$rezagada);
+            }elseif(count($f) <= 6) {
+                array_push($f,$rezagada);
+            }elseif(count($g) <= 6){
+                array_push($g,$rezagada);
+            }elseif(count($h) <= 6){
+                array_push($h,$rezagada);
+            }else{
+                array_push($i,$rezagada);
+            }
+        }
+    }
+
+    //cuarenta y dos
+    foreach ($rezagadas as $rezagada) {
+        $semestre = $rezagada['semestre'];
+        $materia = $rezagada['materia'];
+        if (in_array('1866', $rezagadas) == true && in_array('2308', $rezagadas) == true ){
+            if ($semestre == 9 && count($primerSemestre) <= 6) {
+                array_push($primerSemestre, $rezagada);
+            } elseif (count($segundo) <= 6) {
+                array_push($segundo, $rezagada);
+            } elseif( count($c) <= 6) {
+                array_push($c,$rezagada);
+            }elseif(count($d) <= 6) {
+                array_push($d,$rezagada);
+            }elseif(count($e) <= 6) {
+                array_push($e,$rezagada);
+            }elseif(count($f) <= 6) {
+                array_push($f,$rezagada);
+            }elseif(count($g) <= 6){
+                array_push($g,$rezagada);
+            }elseif(count($h) <= 6){
+                array_push($h,$rezagada);
+            }else{
+                array_push($i,$rezagada);
+            }
+        }
+    }
 
 
 
