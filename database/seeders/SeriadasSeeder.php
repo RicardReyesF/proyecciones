@@ -51,7 +51,7 @@ class SeriadasSeeder extends Seeder
             [1852, 1858], // Autom I - Autom II
             [1853, 1859], // Redes - Conmutacion
             [1856, 1861], // Ing Soft - Gestion
-            [1857, 1862],
+            [1857, 1862], // Leng. Int. - Sis Prog
 
             // Septimo semestre
             [1860, 1865], // Tall. Inv - Tall. Inv II

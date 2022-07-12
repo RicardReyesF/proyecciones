@@ -21,6 +21,11 @@ class ProyeccionesV2Controller extends Controller
         /** @var Alumno $alumno */
         $alumno = Alumno::findOrfail($no_control);
 
+        return $alumno->materias()
+            ->with('seriadas')
+            ->orderBy('semestre', 'ASC')
+            ->get();
+
         $pendientesSeriadas = $alumno->getMateriasPendientes();
         $pendientesNoSeriadas = $alumno->getMateriasPendientes(false);
 
