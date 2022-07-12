@@ -7,10 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Seriadas extends Model
 {
-    protected $fillable =
-    [
-        'materia_id',
+    use HasFactory;
 
-
-    ];
+    protected $guarded = [];
 }
