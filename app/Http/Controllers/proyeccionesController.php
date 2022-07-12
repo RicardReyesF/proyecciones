@@ -904,8 +904,11 @@ class proyeccionesController extends Controller
             }
         }
     }
+//---------------------------Por Cursar---------------------------------//
 
+    foreach ($porcursar as $cursar) {
 
+    }
 
 
 
