@@ -14,21 +14,35 @@ class ProyeccionesV2Controller extends Controller
      * Generar proyeccion para el alumno dado
      *
      * @param string $no_control
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return array
      */
     public function generate(string $no_control = '20280774')
     {
         /** @var Alumno $alumno */
         $alumno = Alumno::findOrfail($no_control);
 
-        return $alumno->materias()
-            ->with('seriadas')
-            ->orderBy('semestre', 'ASC')
-            ->get();
-
         $pendientesSeriadas = $alumno->getMateriasPendientes();
         $pendientesNoSeriadas = $alumno->getMateriasPendientes(false);
 
-        return $pendientesSeriadas->where('semestre', '<=', $alumno->semestre);
+        $agregadas = collect();
+
+        while ($pendientesSeriadas->count() != 0 && $pendientesNoSeriadas->count() != 0) {
+
+            $posiblesSeriadas = $pendientesSeriadas->whereNotIn('materia', $agregadas->pluck('materia')->toArray());
+            $posiblesNoSeriadas = $pendientesNoSeriadas->whereNotIn('materia', $agregadas->pluck('materia')->toArray());
+
+            $semestreAux = collect();
+
+            while ($semestreAux->count() != 7) {
+
+            }
+        }
+
+        return [
+            'modify'   => $pendientesSeriadas->where('semestre', '<=', 4),
+            'original' => $pendientesNoSeriadas
+        ];
     }
+
+
 }
