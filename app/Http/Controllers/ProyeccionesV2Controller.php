@@ -4,19 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Alumno;
 use App\Models\Materias;
-use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
 
 class ProyeccionesV2Controller extends Controller
 {
+    const MATERIAS_POR_SEMESTRE = 7;
+
     /**
      * Generar proyeccion para el alumno dado
      *
      * @param string $no_control
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function generate(string $no_control = '20280774')
+    public function generate(string $no_control = '20280216')
     {
         /** @var Alumno $alumno */
         $alumno = Alumno::findOrfail($no_control);
@@ -26,8 +26,7 @@ class ProyeccionesV2Controller extends Controller
 
         $agregadas = collect();
         $semestreActual = $alumno->semestre;
-
-        $c = 1;
+        $semestres = [];
 
         while ($pendientesSeriadas->count() != 0 && $pendientesNoSeriadas->count() != 0) {
             // Obtener las materias seriadas que aun no se han contemplado en la proyeccion
@@ -45,32 +44,51 @@ class ProyeccionesV2Controller extends Controller
             // Obtener solo las materias no seriadas que sean menores o iguales al semestre proyectado
             $posiblesNoSeriadas = $posiblesNoSeriadas->where('semestre', '<=', $semestreActual);
 
-            if ($posiblesSeriadas->count() + $posiblesNoSeriadas->count() == 0) break;
+            if ($pendientesSeriadas->count() + $pendientesNoSeriadas->count() == 0 || $semestreActual == 30) break;
 
-            if ($posiblesSeriadas->count() + $posiblesNoSeriadas->count() < 7) {
+            if ($posiblesSeriadas->count() + $posiblesNoSeriadas->count() < self::MATERIAS_POR_SEMESTRE) {
                 $semestreActual++;
                 continue;
             }
 
             $semestreAux = collect();
 
-            while ($semestreAux->count() != 7 && $posiblesSeriadas->count() + $posiblesNoSeriadas->count() != 0) {
+            while ($semestreAux->count() != self::MATERIAS_POR_SEMESTRE && $posiblesSeriadas->count() + $posiblesNoSeriadas->count() != 0) {
+
                 if ($posiblesSeriadas->count() > 0) {
-                    $semestreAux->push($posiblesSeriadas->pop());
+                    $semestreAux->push($posiblesSeriadas->shift());
                     continue;
                 }
 
-                if ($posiblesNoSeriadas->count() > 0) $semestreAux->push($posiblesNoSeriadas->pop());
+                if ($posiblesNoSeriadas->count() > 0) $semestreAux->push($posiblesNoSeriadas->shift());
 
             }
 
+
             $agregadas = $agregadas->merge($semestreAux);
+            $semestres[] = $semestreAux;
             $pendientesSeriadas = $pendientesSeriadas->whereNotIn('materia', $agregadas->pluck('materia')->toArray());
             $pendientesNoSeriadas = $pendientesNoSeriadas->whereNotIn('materia', $agregadas->pluck('materia')->toArray());
 
         }
 
-        $semestres = $this->dividirPorSemestres($agregadas);
+        while ($pendientesSeriadas->count() != 0 || $pendientesNoSeriadas->count() != 0) {
+            $posiblesSeriadas = $this->getPosiblesSeriadas($pendientesSeriadas);
+            $posiblesNoSeriadas = $pendientesNoSeriadas;
+
+            $semestreAux = collect();
+            while ($posiblesSeriadas->count() != 0 || $posiblesNoSeriadas->count() != 0) {
+                if ($posiblesSeriadas->count() > 0) {
+                    $semestreAux->push($posiblesSeriadas->shift());
+                    continue;
+                }
+                if ($posiblesNoSeriadas->count() > 0) $semestreAux->push($posiblesNoSeriadas->shift());
+            }
+
+            $semestres[] = $semestreAux;
+            $pendientesSeriadas = $pendientesSeriadas->whereNotIn('materia', $semestreAux->pluck('materia')->toArray());
+            $pendientesNoSeriadas = $pendientesNoSeriadas->whereNotIn('materia', $semestreAux->pluck('materia')->toArray());
+        }
 
         return view('proyeccion-v2', compact(['semestres']));
 
@@ -90,28 +108,6 @@ class ProyeccionesV2Controller extends Controller
         }
 
         return $pendientesSeriadas->whereNotIn('materia', $noPermitidas);
-    }
-
-    /**
-     * @param Collection $materias
-     * @return Collection
-     */
-    private function dividirPorSemestres($materias)
-    {
-        $numeroSemestres = ((int)$materias->count() / 7);
-        $semestres = collect();
-
-        for ($i = 0; $i < $numeroSemestres; $i++) {
-            $materiasSemestre = collect();
-            for ($j = 0; $j < 7; $j++) {
-                $materiasSemestre->push($materias->pop());
-            }
-            $semestres->push($materiasSemestre);
-        }
-
-        if ($materias->count() > 0) $semestres->push($materias->all());
-
-        return $semestres->reverse()->values();
     }
 
 }

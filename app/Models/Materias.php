@@ -25,4 +25,9 @@ class Materias extends Model
     {
         return $this->belongsToMany(Materias::class, 'seriadas', 'anterior_id', 'siguiente_id', 'materia', 'materia');
     }
+
+    public function seriadasAtras()
+    {
+        return $this->belongsToMany(Materias::class, 'seriadas', 'siguiente_id', 'anterior_id', 'materia', 'materia');
+    }
 }

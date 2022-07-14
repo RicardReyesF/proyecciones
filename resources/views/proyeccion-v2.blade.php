@@ -12,13 +12,13 @@
     <title>Document</title>
 </head>
 <body>
-<div class="container-fluid">
-    <div class="row">
+<div class="container-fluid pt-3">
+    <div class="row justify-content-center">
         @foreach($semestres as $semestre)
-            <div class="col-auto">
+            <div class="col-auto border">
                 <ul>
                     @foreach($semestre as $materia)
-                        <li>{{ $materia->nombre }}</li>
+                        <li>{{ $materia->nombre ?? '' }}</li>
                     @endforeach
                 </ul>
             </div>

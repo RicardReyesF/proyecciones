@@ -31,10 +31,14 @@ class Alumno extends Model
             ->orderBy('semestre', 'ASC');
 
         if ($seriadas) {
-            return $materias->whereHas('seriadas')->get();
+            return $materias->whereHas('seriadas')
+                ->orWhereHas('seriadasAtras')
+                ->get();
         }
 
-        return $materias->doesntHave('seriadas')->get();
+        return $materias->doesntHave('seriadas')
+            ->doesntHave('seriadasAtras')
+            ->get();
 
     }
 }
