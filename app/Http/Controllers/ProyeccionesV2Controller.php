@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Alumno;
 use App\Models\Materias;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class ProyeccionesV2Controller extends Controller
 {
@@ -22,6 +23,7 @@ class ProyeccionesV2Controller extends Controller
         $alumno = Alumno::findOrfail($no_control);
 
         $pendientesSeriadas = $alumno->getMateriasPendientes();
+
         $pendientesNoSeriadas = $alumno->getMateriasPendientes(false);
 
         $agregadas = collect();
