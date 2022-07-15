@@ -1,78 +1,104 @@
 @extends('platilla')
 @section('content')
 
-<head>
-    <!-- Custom styles for this template -->
-    <link href="css/sb-admin-2.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    <head>
+        <!-- Custom styles for this template -->
+        <link href="css/sb-admin-2.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
 
 
-</head>
+    </head>
 
-<div class="container-fluid">
+    <body>
 
-    <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Charts</h1>
-
-    <!-- Content Row -->
-    <div class="row">
-
-        <div class="col-xl-8 col-lg-7">
-
-            <!-- Area Chart -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Area Chart</h6>
-                </div>
-                <div class="card-body">
-                    <div class="chart-area">
-                        <canvas id="myAreaChart"></canvas>
+        <div class="conteiner-fluid">
+            <div>
+                <div class="col-xl-4 col-lg-5">
+                    <div class="card shadow mb-4">
+                        <!-- Card Header - Dropdown -->
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Servicio Social</h6>
+                        </div>
+                        <!-- Card Body -->
+                        <div class="card-body">
+                            <div>
+                                <canvas id="myChart" width="100" height="100"></canvas>
+                            </div>
+                            <hr>
+                            Alumnos que pueden realizar el Servicio Social.
+                        </div>
                     </div>
-                    <hr>
-                    Styling for the area chart can be found in the
-                    <code>/js/demo/chart-area-demo.js</code> file.
                 </div>
-            </div>
 
-            <!-- Bar Chart -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
-                </div>
-                <div class="card-body">
-                    <div class="chart-bar">
-                        <canvas id="myBarChart"></canvas>
+                <div class="col-xl-4 col-lg-5">
+                    <div class="card shadow mb-4">
+                        <!-- Card Header - Dropdown -->
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Residencia Profesional</h6>
+                        </div>
+                        <!-- Card Body -->
+                        <div class="card-body">
+                            <div>
+                                <canvas id="myChart1" width="100" height="100"></canvas>
+                            </div>
+                            <hr>
+                            Alumnos que pueden realizar el Residencia Profesional.
+                        </div>
                     </div>
-                    <hr>
-                    Styling for the bar chart can be found in the
-                    <code>/js/demo/chart-bar-demo.js</code> file.
                 </div>
             </div>
 
         </div>
 
-        <!-- Donut Chart -->
-        <div class="col-xl-4 col-lg-5">
-            <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                    <div class="chart-pie pt-4">
-                        <canvas id="myPieChart"></canvas>
-                    </div>
-                    <hr>
-                    Styling for the donut chart can be found in the
-                    <code>/js/demo/chart-pie-demo.js</code> file.
-                </div>
-            </div>
-        </div>
-    </div>
 
-</div>
-<!-- /.container-fluid -->
-</div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: [
+                        'Mujeres',
+                        'Hombres',
+                    ],
+                    datasets: [{
+                        label: 'My First Dataset',
+                        data: [{{ count($mujeres) }}, {{ count($hombres) }}],
+                        backgroundColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(54, 162, 235)',
+
+                        ],
+                        hoverOffset: 4
+                    }]
+                }
+            });
+        </script>
+        <script>
+            const ctx1 = document.getElementById('myChart1').getContext('2d');
+            const myChart1 = new Chart(ctx1, {
+                type: 'pie',
+                data: {
+                    labels: [
+                        'Mujeres',
+                        'Hombres',
+                    ],
+                    datasets: [{
+                        label: 'My First Dataset',
+                        data: [{{count($mujeresR)}}, {{count($hombresR)}}],
+                        backgroundColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(54, 162, 235)',
+
+                        ],
+                        hoverOffset: 4
+                    }]
+                }
+            });
+        </script>
+
+    </body>
 @endsection

@@ -31,11 +31,11 @@ Route::get('/home', [App\Http\Controllers\dashboardController::class, 'index'])-
 Route::get('/alumnos', [App\Http\Controllers\alumnosController::class, 'alumnos'])->name('Alumnos');
 Route::get('/estadisticas', [App\Http\Controllers\estadisticasController::class, 'estadisticas'])->name('Estadisticas');
 Route::get('/materias/{id}', [App\Http\Controllers\materiasController::class, 'materias'])->name('Materias');
-Route::get('/proyeccion/{id}', [App\Http\Controllers\proyeccionesController::class, 'proyeccion'])->name('Proyeccion');
+//Route::get('/proyeccion/{id}', [App\Http\Controllers\proyeccionesController::class, 'proyeccion'])->name('Proyeccion');
 Route::get('/servicio/export', [App\Http\Controllers\servicioController::class, 'export'])->name('Servicio');
 Route::get('/materiasc/export', [App\Http\Controllers\materiasCursadasController::class, 'export'])->name('MateriasC');
 Route::get('/creditos/export', [App\Http\Controllers\creditosController::class, 'export'])->name('Creditos');
 Route::post('/alumnos/importar', [App\Http\Controllers\alumnosController::class, 'importar'])->name('Importar');
 
 
-Route::get('/ex', [ProyeccionesV2Controller::class, 'generate']);
+Route::get('/ex/{id}', [ProyeccionesV2Controller::class, 'generate'])->name('Proyeccion');

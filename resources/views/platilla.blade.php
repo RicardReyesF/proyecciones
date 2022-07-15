@@ -58,7 +58,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route ('Alumnos') }}" aria-expanded="true" >
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Proyeccion</span>
+                    <span>Alumnos</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route ('Estadisticas') }}" aria-expanded="true" >
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Estadisticas</span>
                 </a>
             </li>
 
@@ -74,8 +81,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Archivos</h6>
                         <a class="collapse-item" href="{{route('Servicio')}}">Servicio Social</a>
-                        <a class="collapse-item" href="{{route('Creditos')}}">Creditos complementarios</a>
-                        <a class="collapse-item" href="{{route('MateriasC')}}">Materias cursadas</a>
+                        <a class="collapse-item" href="{{route('Creditos')}}">Residencia</a>
                     </div>
                 </div>
                 <!-- Divider -->
@@ -160,26 +166,7 @@
             <i class="fas fa-angle-up"></i>
         </a>
 
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
         <!-- Bootstrap core JavaScript-->
         <script src="vendor/jquery/jquery.min.js"></script>
@@ -197,6 +184,8 @@
         <!-- Page level custom scripts -->
         <script src="js/demo/chart-area-demo.js"></script>
         <script src="js/demo/chart-pie-demo.js"></script>
+
+
 
 </body>
 

@@ -17,10 +17,10 @@ class ProyeccionesV2Controller extends Controller
      * @param string $no_control
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function generate(string $no_control = '20280216')
+    public function generate(string $id)
     {
         /** @var Alumno $alumno */
-        $alumno = Alumno::findOrfail($no_control);
+        $alumno = Alumno::findOrfail($id);
 
         $pendientesSeriadas = $alumno->getMateriasPendientes();
 
@@ -92,7 +92,7 @@ class ProyeccionesV2Controller extends Controller
             $pendientesNoSeriadas = $pendientesNoSeriadas->whereNotIn('materia', $semestreAux->pluck('materia')->toArray());
         }
 
-        return view('proyeccion-v2', compact(['semestres']));
+        return view('Dashboard.proyeccion', compact(['semestres']));
 
     }
 
