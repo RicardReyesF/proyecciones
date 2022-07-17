@@ -13,8 +13,8 @@
     <body>
 
         <div class="conteiner-fluid">
-            <div>
-                <div class="col-xl-4 col-lg-5">
+            <div class="card-columns">
+                <div>
                     <div class="card shadow mb-4">
                         <!-- Card Header - Dropdown -->
                         <div class="card-header py-3">
@@ -31,7 +31,7 @@
                     </div>
                 </div>
 
-                <div class="col-xl-4 col-lg-5">
+                <div>
                     <div class="card shadow mb-4">
                         <!-- Card Header - Dropdown -->
                         <div class="card-header py-3">
