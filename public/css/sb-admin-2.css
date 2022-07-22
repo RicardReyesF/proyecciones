@@ -11413,14 +11413,14 @@ body.sidebar-toggled footer.sticky-footer {
 
 .cardT{
             margin: 10 auto;
-            background: rgb(27, 57, 106);
+            /*background: rgb(27, 57, 106);*/
             color:rgb(255, 255, 255);
             width: 200px;
             padding: 5px;
             box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.377);
             border-radius: 20px;
             border: 1px solid #ff8000;
-            
+
 
         }
 .contenedor{

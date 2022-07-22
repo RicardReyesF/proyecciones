@@ -13,12 +13,15 @@
     <div class="conteiner-fluid">
         <div class="card-columns">
             @foreach ($semestres as $semestre)
-
-            <div class="cardT">
-                @foreach($semestre as $materia)
-                        <li>{{ $materia->nombre ?? '' }}</li>
-                @endforeach
-            </div>
+                <div class="cardT {{ $alumno->semestre + $loop->index > 12 ? 'bg-danger' : 'bg-success' }}">
+                    <h6 class="text-center">
+                        Semestre {{ $alumno->semestre + $loop->index }}
+                    </h6>
+                    <hr>
+                    @foreach($semestre as $materia)
+                            <li>{{ $materia->nombre ?? '' }}</li>
+                    @endforeach
+                </div>
             @endforeach
         </div>
     </div>

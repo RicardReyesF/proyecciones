@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class ProyeccionesV2Controller extends Controller
 {
-    const MATERIAS_POR_SEMESTRE = 7;
+    const MATERIAS_POR_SEMESTRE = 6;
 
     /**
      * Generar proyeccion para el alumno dado
@@ -91,8 +91,7 @@ class ProyeccionesV2Controller extends Controller
             $pendientesSeriadas = $pendientesSeriadas->whereNotIn('materia', $semestreAux->pluck('materia')->toArray());
             $pendientesNoSeriadas = $pendientesNoSeriadas->whereNotIn('materia', $semestreAux->pluck('materia')->toArray());
         }
-
-        return view('Dashboard.proyeccion', compact(['semestres']));
+        return view('Dashboard.proyeccion', compact(['semestres','alumno']));
 
     }
 
