@@ -26,6 +26,9 @@
                                 <canvas id="myChart" width="100" height="100"></canvas>
                             </div>
                             <hr>
+                            Total de Alumnos : {{count($mujeres) + count($hombres)}}
+
+                            <hr>
                             Alumnos que pueden realizar el Servicio Social.
                         </div>
                     </div>
@@ -42,6 +45,8 @@
                             <div>
                                 <canvas id="myChart1" width="100" height="100"></canvas>
                             </div>
+                            <hr>
+                            Total de Alumnos : {{count($mujeresR) + count($hombresR)}}
                             <hr>
                             Alumnos que pueden realizar el Residencia Profesional.
                         </div>

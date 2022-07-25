@@ -16,10 +16,15 @@ class alumnosController extends Controller
 {
     public function alumnos()
     {
-        $user=Auth::user()->carrera;
-        $alumnos=DB::table('alumnos')->where('planDeEstudio','=',$user)->get();
+        if (Auth::user()->carrera == 1) {
+            $alumnos=Alumno::all();
+            return view('Dashboard.alumnos',array('alumnos'=> $alumnos));
+        }else {
+            $user=Auth::user()->carrera;
+            $alumnos=DB::table('alumnos')->where('planDeEstudio','=',$user)->get();
+            return view('Dashboard.alumnos',array('alumnos'=> $alumnos));
 
-        return view('Dashboard.alumnos',array('alumnos'=> $alumnos));
+        }
     }
 
     public function importar(Request $request)

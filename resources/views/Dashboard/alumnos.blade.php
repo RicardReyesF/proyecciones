@@ -35,6 +35,7 @@
                         <tr>
                             <th>Nombre</th>
                             <th>No de control</th>
+                            <th>Carrera</th>
                             <th>Semestre</th>
                             <th>Creditos plan de estudio</th>
                             <th>Creditos acumulados</th>
@@ -49,6 +50,7 @@
                             <tr>
                                 <td>{{ $alumno->nombre}}</td>
                                 <td>{{ $alumno->noControl }}</td>
+                                <td>{{ $alumno->carrera }}</td>
                                 <td>{{ $alumno->semestre }}</td>
                                 <td>{{ $alumno->creditosPlan }}</td>
                                 <td>{{ $alumno->creditosA }}</td>

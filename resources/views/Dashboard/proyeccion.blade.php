@@ -20,7 +20,12 @@
                     <hr>
                     @foreach($semestre as $materia)
                             <li>{{ $materia->nombre ?? '' }}</li>
+
                     @endforeach
+                    <h6 class="text-center">
+                        Creditos: {{$semestre->sum('creditos')}}
+                    </h6>
+
                 </div>
             @endforeach
         </div>
